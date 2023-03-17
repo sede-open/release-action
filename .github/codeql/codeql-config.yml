@@ -1,7 +1,7 @@
 paths-ignore:
   - dist
-query-filters:
-    - exclude:
-        id: 
-          - cpp/unbounded-write
-          - cpp/path-injection
+# query-filters:
+#     - exclude:
+#         id: 
+#           - cpp/unbounded-write
+#           - cpp/path-injection
