@@ -15,14 +15,14 @@ import {ReleaseValidator} from "./ReleaseValidator";
 import {ActionSkipper} from "./ActionSkipper";
 
 export class Action {
-    private inputs: Inputs
-    private outputs: Outputs
-    private releases: Releases
-    private uploader: ArtifactUploader
-    private artifactDestroyer: ArtifactDestroyer
-    private skipper: ActionSkipper
+    private readonly inputs: Inputs
+    private readonly outputs: Outputs
+    private readonly releases: Releases
+    private readonly uploader: ArtifactUploader
+    private readonly artifactDestroyer: ArtifactDestroyer
+    private readonly skipper: ActionSkipper
     
-    private releaseValidator: ReleaseValidator
+    private readonly releaseValidator: ReleaseValidator
 
     constructor(inputs: Inputs,
                 outputs: Outputs,
@@ -104,7 +104,7 @@ export class Action {
 
     private static noPublishedRelease(error: any): boolean {
         const githubError = new GithubError(error)
-        return githubError.status == 404
+        return githubError.status === 404
     }
 
     private async updateDraftOrCreateRelease(): Promise<CreateReleaseResponse | UpdateReleaseResponse> {
@@ -120,7 +120,7 @@ export class Action {
         const tag = this.inputs.tag
         const response = await this.releases.listReleases()
         const releases = response.data
-        const draftRelease = releases.find(release => release.draft && release.tag_name == tag)
+        const draftRelease = releases.find(release => release.draft && release.tag_name === tag)
 
         return draftRelease?.id
     }

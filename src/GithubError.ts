@@ -1,7 +1,7 @@
 import {GithubErrorDetail} from "./GithubErrorDetail"
 
 export class GithubError {
-    private error: any
+    private readonly error: any
     private readonly githubErrors: GithubErrorDetail[]
 
     constructor(error: any) {
@@ -23,7 +23,7 @@ export class GithubError {
     }
 
     hasErrorWithCode(code: String): boolean {
-        return this.githubErrors.some((err) => err.code == code)
+        return this.githubErrors.some((err) => err.code === code)
     }
 
     toString(): string {
@@ -42,7 +42,7 @@ export class GithubError {
     }
     
     private remediation(): String {
-        if (this.status == 404) {
+        if (this.status === 404) {
             return "\nMake sure your github token has access to the repo and has permission to author releases"
         }
         return ""

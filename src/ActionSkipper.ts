@@ -5,9 +5,9 @@ export interface ActionSkipper {
 }
 
 export class ReleaseActionSkipper {
-    constructor(private skipIfReleaseExists: boolean,
-                private releases: Releases,
-                private tag: string) {
+    constructor(private readonly skipIfReleaseExists: boolean,
+                private readonly releases: Releases,
+                private readonly tag: string) {
     }
 
     async shouldSkip(): Promise<boolean> {

@@ -1,5 +1,5 @@
 export class GithubErrorDetail {
-    private error: any;
+    private readonly error: any;
 
     constructor(error: any) {
         this.error = error

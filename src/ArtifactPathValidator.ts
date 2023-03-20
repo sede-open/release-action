@@ -3,7 +3,7 @@ import {statSync} from "fs";
 
 export class ArtifactPathValidator {
     private readonly errorsFailBuild: boolean;
-    private paths: string[];
+    private readonly paths: string[];
     private readonly pattern: string
     
     constructor(errorsFailBuild: boolean, paths: string[], pattern: string) {
@@ -18,7 +18,7 @@ export class ArtifactPathValidator {
     }
     
     private verifyPathsNotEmpty() {
-        if (this.paths.length == 0) {
+        if (this.paths.length === 0) {
             const message = `Artifact pattern:${this.pattern} did not match any files`
             this.reportError(message)
         }

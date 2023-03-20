@@ -8,9 +8,9 @@ export interface ArtifactUploader {
 
 export class GithubArtifactUploader implements ArtifactUploader {
     constructor(
-        private releases: Releases,
-        private replacesExistingArtifacts: boolean = true,
-        private throwsUploadErrors: boolean = false,
+        private readonly releases: Releases,
+        private readonly replacesExistingArtifacts: boolean = true,
+        private readonly throwsUploadErrors: boolean = false,
     ) {
     }
 

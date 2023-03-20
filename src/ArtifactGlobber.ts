@@ -10,7 +10,7 @@ export interface ArtifactGlobber {
 }
 
 export class FileArtifactGlobber implements ArtifactGlobber {
-    private globber: Globber
+    private readonly globber: Globber
 
     constructor(globber: Globber = new FileGlobber()) {
         this.globber = globber
@@ -30,7 +30,7 @@ export class FileArtifactGlobber implements ArtifactGlobber {
 
     private globPattern(pattern: string, errorsFailBuild: boolean): [string, string[]] {
         const paths = this.globber.glob(pattern)
-        if (paths.length == 0) {
+        if (paths.length === 0) {
             if (errorsFailBuild) {
                 FileArtifactGlobber.throwGlobError(pattern)
             } else {

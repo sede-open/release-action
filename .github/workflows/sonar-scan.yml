@@ -18,6 +18,9 @@ jobs:
       # https://github.com/SonarSource/sonarqube-scan-action
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@master
+        with:
+          args: >
+            -Dsonar.exclusions=lib/**,dist/**
         env:
           GITHUB_TOKEN: ${{ github.token }}
           SONAR_TOKEN: ${{ secrets.sonar_token }}

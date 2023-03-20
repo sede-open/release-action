@@ -74,11 +74,11 @@ export class GithubReleases implements Releases {
         body?: string,
         commitHash?: string,
         discussionCategory?: string,
-        draft?: boolean,
-        generateReleaseNotes?: boolean,
+        draft: boolean = false,
+        generateReleaseNotes: boolean = false,
         makeLatest?: string,
         name?: string,
-        prerelease?: boolean
+        prerelease: boolean = false
     ): Promise<CreateReleaseResponse> {
         // noinspection TypeScriptValidateJSTypes
         return this.git.rest.repos.createRelease({
@@ -137,10 +137,10 @@ export class GithubReleases implements Releases {
         body?: string,
         commitHash?: string,
         discussionCategory?: string,
-        draft?: boolean,
+        draft: boolean = false,
         makeLatest?: string,
         name?: string,
-        prerelease?: boolean
+        prerelease: boolean = false
     ): Promise<UpdateReleaseResponse> {
         // noinspection TypeScriptValidateJSTypes
         return this.git.rest.repos.updateRelease({
