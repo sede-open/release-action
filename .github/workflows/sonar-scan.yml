@@ -31,7 +31,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.sonar_token }}
 
       - name: Upload SonarQube Scan Report
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v4
         with:
           name: sonar-scan-log
           path: .scannerwork/report-task.txt
