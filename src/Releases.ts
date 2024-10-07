@@ -25,7 +25,7 @@ export interface Releases {
         discussionCategory?: string,
         draft?: boolean,
         generateReleaseNotes?: boolean,
-        makeLatest?: string,
+        makeLatest?:  "legacy" | "true" | "false" | undefined,
         name?: string,
         prerelease?: boolean
     ): Promise<CreateReleaseResponse>
@@ -45,7 +45,7 @@ export interface Releases {
         commitHash?: string,
         discussionCategory?: string,
         draft?: boolean,
-        makeLatest?: string,
+        makeLatest?:  "legacy" | "true" | "false" | undefined,
         name?: string,
         prerelease?: boolean
     ): Promise<UpdateReleaseResponse>
@@ -74,11 +74,11 @@ export class GithubReleases implements Releases {
         body?: string,
         commitHash?: string,
         discussionCategory?: string,
-        draft: boolean = false,
-        generateReleaseNotes: boolean = false,
-        makeLatest?: string,
+        draft?: boolean,
+        generateReleaseNotes?: boolean,
+        makeLatest?:  "legacy" | "true" | "false" | undefined,
         name?: string,
-        prerelease: boolean = false
+        prerelease?: boolean
     ): Promise<CreateReleaseResponse> {
         // noinspection TypeScriptValidateJSTypes
         return this.git.rest.repos.createRelease({
@@ -137,10 +137,10 @@ export class GithubReleases implements Releases {
         body?: string,
         commitHash?: string,
         discussionCategory?: string,
-        draft: boolean = false,
-        makeLatest?: string,
+        draft?: boolean,
+        makeLatest?:  "legacy" | "true" | "false" | undefined,
         name?: string,
-        prerelease: boolean = false
+        prerelease?: boolean
     ): Promise<UpdateReleaseResponse> {
         // noinspection TypeScriptValidateJSTypes
         return this.git.rest.repos.updateRelease({

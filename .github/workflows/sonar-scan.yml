@@ -13,14 +13,11 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       # https://github.com/SonarSource/sonarqube-scan-action
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@master
-        with:
-          args: >
-            -Dsonar.exclusions=lib/**,dist/**
         env:
           GITHUB_TOKEN: ${{ github.token }}
           SONAR_TOKEN: ${{ secrets.sonar_token }}
@@ -34,7 +31,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.sonar_token }}
 
       - name: Upload SonarQube Scan Report
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v4
         with:
           name: sonar-scan-log
           path: .scannerwork/report-task.txt

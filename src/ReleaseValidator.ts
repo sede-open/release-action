@@ -1,5 +1,5 @@
 export class ReleaseValidator {
-    constructor(private readonly updateOnlyUnreleased: boolean) {
+    constructor(private updateOnlyUnreleased: boolean) {
     }
 
     validateReleaseUpdate(releaseResponse: ReleaseStageArguments) {

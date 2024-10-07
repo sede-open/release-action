@@ -6,7 +6,7 @@ export interface ArtifactDestroyer {
 }
 
 export class GithubArtifactDestroyer implements ArtifactDestroyer {
-    constructor(private readonly releases: Releases) {
+    constructor(private releases: Releases) {
     }
 
     async destroyArtifacts(releaseId: number): Promise<void> {

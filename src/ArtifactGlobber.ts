@@ -10,7 +10,7 @@ export interface ArtifactGlobber {
 }
 
 export class FileArtifactGlobber implements ArtifactGlobber {
-    private readonly globber: Globber
+    private globber: Globber
 
     constructor(globber: Globber = new FileGlobber()) {
         this.globber = globber
@@ -24,13 +24,13 @@ export class FileArtifactGlobber implements ArtifactGlobber {
             .map(path => FileArtifactGlobber.expandPath(path))
             .map(pattern => this.globPattern(pattern, errorsFailBuild))
             .map((globResult) => FileArtifactGlobber.validatePattern(errorsFailBuild, globResult[1], globResult[0]))
-            .reduce((accumulated, current) => accumulated.concat(current))
+            .reduce((accumulated, current) => accumulated.concat(current), [])
             .map(path => new Artifact(path, contentType))
     }
 
     private globPattern(pattern: string, errorsFailBuild: boolean): [string, string[]] {
         const paths = this.globber.glob(pattern)
-        if (paths.length === 0) {
+        if (paths.length == 0) {
             if (errorsFailBuild) {
                 FileArtifactGlobber.throwGlobError(pattern)
             } else {
