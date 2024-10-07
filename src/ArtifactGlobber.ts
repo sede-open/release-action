@@ -24,7 +24,7 @@ export class FileArtifactGlobber implements ArtifactGlobber {
             .map(path => FileArtifactGlobber.expandPath(path))
             .map(pattern => this.globPattern(pattern, errorsFailBuild))
             .map((globResult) => FileArtifactGlobber.validatePattern(errorsFailBuild, globResult[1], globResult[0]))
-            .reduce((accumulated, current) => accumulated.concat(current))
+            .reduce((accumulated, current) => accumulated.concat(current), [])
             .map(path => new Artifact(path, contentType))
     }
 
